@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fg2currency</title>
+</head>
+<body>
+    <div>
+        <label for="fg">_fg</label>
+        <input class="input" id="fg" type="number" />
+        <button class="button is-info" id="fgCalc">CALC</button>
+    </div>
+
+    <div>
+        <label for="usd">usd</label>
+        <input id="usd" type="number" />
+        <button id="usdCalc">CALC</button>
+    </div>
+
+    <div>
+        <label for="cad">cad</label>
+        <input id="cad" type="number" />
+        <button id="cadCalc">CALC</button>
+    </div>
+
+    <div>
+        <label for="brl">brl</label>
+        <input id="brl" type="number" />
+        <button id="brlCalc">CALC</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const fgTxt = document.getElementById('fg')
+            const fgBtn = document.getElementById('fgCalc')
+
+            const usdTxt = document.getElementById('usd')
+            const usdBtn = document.getElementById('usdCalc')
+
+            const cadTxt = document.getElementById('cad')
+            const cadBtn = document.getElementById('cadCalc')
+
+            const brlTxt = document.getElementById('brl')
+            const brlBtn = document.getElementById('brlCalc')
+
+            fgBtn.onclick = () => {
+                const fg = fgTxt.value
+                usdTxt.value = fg * 0.030
+                cadTxt.value = fg * 0.039
+                brlTxt.value = fg * 0.180
+            }
+
+            usdBtn.onclick = () => {
+                const fg = usdTxt.value * 1000 / 30
+                fgTxt.value = fg
+                cadTxt.value = fg * 0.039
+                brlTxt.value = fg * 0.180
+            }
+
+            cadBtn.onclick = () => {
+                const fg = cadTxt.value * 1000 / 39
+                fgTxt.value = fg
+                usdTxt.value = fg * 0.030
+                brlTxt.value = fg * 0.180
+            }
+
+            brlBtn.onclick = () => {
+                const fg = brlTxt.value * 1000 / 180
+                fgTxt.value = fg
+                usdTxt.value = fg * 0.030
+                cadTxt.value = fg * 0.039
+            }
+        }, false);
+    </script>
+</body>
+</html>
